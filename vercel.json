@@ -1,0 +1,22 @@
+{
+  "builds": [
+    {
+      "src": "core/wsgi.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "migrate.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "templates"
+      }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "(.*)",
+      "destination": "core/wsgi.py"
+    }
+  ],
+  "trailingSlash": true
+}
